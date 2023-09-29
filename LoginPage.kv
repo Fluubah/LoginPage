@@ -1,15 +1,68 @@
-Question1Screen:
+
+
+
+<QuizManager>:
+    Question1Screen:
+        name: "question1"
+    CorrectScreen:
+        name :"correct"
+    ErrorScreen:
+        name:"error"
+
 
 <Question1Screen>:
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Question 1"
+            text: "North-most state of the US"
         BoxLayout:
             orientation: "horizontal"
             Button:
-                text:"Text A"
+                text:"Washington"
+                background_normal: "Washington.png"
+                on_release: root.answer_question(False)
             Button:
-                text:"Text B"
+                text:"Alaska"
+                background_normal : "Alaska.png"
+                on_release: root.answer_question(True)
             Button:
-                text: "Text C"
+                text: "Maine"
+                background_normal : "Maine.png"
+                on_release: root.answer_question(False)
+
+<Question2Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "How many US states border the Pacific Ocean"
+        BoxLayout:
+            orientation: "horizontal"
+            TextInput:
+                id: number
+                hint_text: "How many states border the Pacific Ocean"
+
+
+<CorrectScreen>:
+    BoxLayout:
+        padding: 40
+        orientation: "vertical"
+        Label:
+            font_size: 128
+            color:0,1,0,1
+            text:"Correct!"
+        Button:
+            background_color: 0,1,0,1
+            text:"Next Question"
+            on_release:
+<ErrorScreen>:
+    BoxLayout:
+        padding: 40
+        orientation: "vertical"
+        Label:
+            font_size: 128
+            color:1,0,0,1
+            text:"Incorrect"
+        Button:
+            background_color: 1,0,0,1
+            text:"Retry"
+            on_release: root.retry()
